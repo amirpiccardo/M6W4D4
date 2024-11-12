@@ -10,10 +10,11 @@ const emailRoute = require("./routes/sendEmail");
 const usersRoute = require("./routes/users");
 const githubRoute = require("./routes/github");
 
+
 const app = express();
 
 const corsOptions = {
-  origin: "http://blogepic.vercel.app/",
+  origin: "*",
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
 };
@@ -23,7 +24,7 @@ mongoose
   .catch((err) => console.error("Errore di connessione a MongoDB:", err));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use("", authorsRouter);
 app.use("", blogPostsRouter);
 app.use("", uploadRouter);

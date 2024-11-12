@@ -12,9 +12,7 @@ import BlogPosts from "./components/BlogPosts";
 import SearchResults from "./components/SearchResults";
 import Success from "./components/Success";
 
-fetch(`${apiUrl}/api/some-endpoint`)
-  .then(response => response.json())
-  .then(data => console.log(data));
+
   
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BsBook, BsHeart } from 'react-icons/bs';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { BsBook, BsHeart, BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
 const BlogPostsPreview = ({ theme }) => {
   const [posts, setPosts] = useState([]);
@@ -13,13 +13,18 @@ const BlogPostsPreview = ({ theme }) => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:4040/blogPosts?page=${page}&pageSize=${pageSize}`);
-        if (!response.ok) throw new Error(`Errore: ${response.status} ${response.statusText}`);
+        const response = await fetch(
+          `http://localhost:4040/blogPosts?page=${page}&pageSize=${pageSize}`
+        );
+        if (!response.ok)
+          throw new Error(`Errore: ${response.status} ${response.statusText}`);
         const data = await response.json();
-        setPosts(data.blogPosts.map(post => ({ ...post, likes: post.likes || 0 })));
+        setPosts(
+          data.blogPosts.map((post) => ({ ...post, likes: post.likes || 0 }))
+        );
         setTotalPages(data.totalPages);
       } catch (error) {
-        console.error('Errore durante il recupero dei post:', error);
+        console.error("Errore durante il recupero dei post:", error);
       } finally {
         setLoading(false);
       }
@@ -28,9 +33,11 @@ const BlogPostsPreview = ({ theme }) => {
   }, [page, pageSize]);
 
   const handleLike = (postId) => {
-    setPosts(posts.map(post =>
-      post._id === postId ? { ...post, likes: post.likes + 1 } : post
-    ));
+    setPosts(
+      posts.map((post) =>
+        post._id === postId ? { ...post, likes: post.likes + 1 } : post
+      )
+    );
   };
 
   const handlePreviousPage = () => {
@@ -48,27 +55,43 @@ const BlogPostsPreview = ({ theme }) => {
     <div className="container my-4">
       <h2>Articoli Recenti</h2>
       <div className="row">
-        {posts.map(post => (
+        {posts.map((post) => (
           <div className="col-md-4" key={post._id}>
-            <div className={`card mb-4 ${theme === 'dark' ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
+            <div
+              className={`card mb-4 ${
+                theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"
+              }`}
+            >
               <img src={post.cover} alt={post.title} className="card-img-top" />
               <div className="card-body">
                 <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">
-                  {post.content.substring(0, 100)}...
-                </p>
+                <p className="card-text">{post.content.substring(0, 100)}...</p>
                 <p className="card-text">
                   <small className="text-muted">
-                    {post.author} - Tempo di Lettura: {post.readtime.value} {post.readtime.unit}
+                    <Link
+                      to={`/authors/${post.authorId}`}
+                      className="text-decoration-none text-reset"
+                    >
+                      {post.author}
+                    </Link>{" "}
+                    - Tempo di Lettura: {post.readtime.value}{" "}
+                    {post.readtime.unit}
                   </small>
                 </p>
-                <Link to={`/blog-posts/${post._id}`} className="btn btn-primary">
+                <Link
+                  to={`/blog-posts/${post._id}`}
+                  className="btn btn-primary"
+                >
                   <BsBook /> Leggi di più
                 </Link>
                 <div className="d-flex justify-content-end align-items-center mt-2">
                   <BsHeart
                     onClick={() => handleLike(post._id)}
-                    style={{ cursor: 'pointer', color: 'red', marginRight: '5px' }}
+                    style={{
+                      cursor: "pointer",
+                      color: "red",
+                      marginRight: "5px",
+                    }}
                   />
                   <span>{post.likes}</span>
                 </div>
@@ -78,12 +101,22 @@ const BlogPostsPreview = ({ theme }) => {
         ))}
       </div>
       <div className="pagination d-flex justify-content-between">
-        <button onClick={handlePreviousPage} disabled={page === 1} className="btn btn-secondary">
-          Pagina precedente
+        <button
+          onClick={handlePreviousPage}
+          disabled={page === 1}
+          className="btn btn-secondary"
+        >
+          <BsArrowLeft />
         </button>
-        <span>Pagina {page} di {totalPages}</span>
-        <button onClick={handleNextPage} disabled={page === totalPages} className="btn btn-secondary">
-          Pagina successiva
+        <span>
+          Pagina {page} di {totalPages}
+        </span>
+        <button
+          onClick={handleNextPage}
+          disabled={page === totalPages}
+          className="btn btn-secondary"
+        >
+          <BsArrowRight />
         </button>
       </div>
     </div>

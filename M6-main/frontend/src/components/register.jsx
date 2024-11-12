@@ -26,7 +26,7 @@ const Register = () => {
         return;
       }
 
-      navigate("/login"); // Dopo la registrazione, vai alla pagina di login
+      navigate("/login");
     } catch (err) {
       setError("Errore nella connessione al server.");
     }
@@ -37,7 +37,9 @@ const Register = () => {
       <h2>Registrazione</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="userName" className="form-label">Username</label>
+          <label htmlFor="userName" className="form-label">
+            Username
+          </label>
           <input
             type="text"
             className="form-control"
@@ -48,7 +50,9 @@ const Register = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
           <input
             type="email"
             className="form-control"
@@ -59,7 +63,9 @@ const Register = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
             className="form-control"
@@ -70,7 +76,9 @@ const Register = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="dob" className="form-label">Data di nascita</label>
+          <label htmlFor="dob" className="form-label">
+            Data di nascita
+          </label>
           <input
             type="date"
             className="form-control"
@@ -81,7 +89,9 @@ const Register = () => {
           />
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <button type="submit" className="btn btn-primary">Registrati</button>
+        <button type="submit" className="btn btn-primary">
+          Registrati
+        </button>
       </form>
     </div>
   );

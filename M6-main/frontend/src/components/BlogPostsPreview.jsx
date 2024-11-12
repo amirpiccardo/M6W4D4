@@ -14,7 +14,7 @@ const BlogPostsPreview = ({ theme }) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:4040/blogPosts?page=${page}&pageSize=${pageSize}`
+          `https://blogepic.onrender.com/blogPosts?page=${page}&pageSize=${pageSize}`
         );
         if (!response.ok)
           throw new Error(`Errore: ${response.status} ${response.statusText}`);

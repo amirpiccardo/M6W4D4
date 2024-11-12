@@ -22,7 +22,7 @@ const SearchResults = ({ theme }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:4040/search?query=${query}&page=${page}&pageSize=${postsPerPage}` // Aggiunto pageSize
+        `https://blogepic.onrender.com/search?query=${query}&page=${page}&pageSize=${postsPerPage}` // Aggiunto pageSize
       );
       if (!response.ok) throw new Error(`Errore: ${response.status}`);
       const data = await response.json();
@@ -40,7 +40,7 @@ const SearchResults = ({ theme }) => {
   const handleLike = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:4040/blogPosts/${postId}/like`,
+        `https://blogepic.onrender.com/blogPosts/${postId}/like`,
         {
           method: "PUT",
         }

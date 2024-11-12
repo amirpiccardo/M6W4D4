@@ -19,7 +19,7 @@ const Authors = ({ theme }) => {
 
   const fetchAuthors = async () => {
     try {
-      const response = await fetch("http://localhost:4040/authors");
+      const response = await fetch("https://blogepic.onrender.com/authors");
       const data = await response.json();
       setAuthors(data.authors);
     } catch (error) {
@@ -31,8 +31,8 @@ const Authors = ({ theme }) => {
     e.preventDefault();
     const method = selectedAuthor ? "PUT" : "POST";
     const url = selectedAuthor
-      ? `http://localhost:4040/authors/${selectedAuthor._id}`
-      : "http://localhost:4040/authors";
+      ? `https://blogepic.onrender.com/authors/${selectedAuthor._id}`
+      : "https://blogepic.onrender.com/authors";
 
     try {
       const response = await fetch(url, {
@@ -72,7 +72,7 @@ const Authors = ({ theme }) => {
 
   const handleDelete = async (authorId) => {
     try {
-      await fetch(`http://localhost:4040/authors/${authorId}`, {
+      await fetch(`https://blogepic.onrender.com/authors/${authorId}`, {
         method: "DELETE",
       });
       fetchAuthors();

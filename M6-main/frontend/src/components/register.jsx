@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4040/users/create", {
+      const response = await fetch("https://blogepic.onrender.com/users/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

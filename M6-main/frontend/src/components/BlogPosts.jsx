@@ -19,7 +19,7 @@ const BlogPosts = ({ theme }) => {
 
   const fetchBlogPosts = async () => {
     try {
-      const response = await fetch("http://localhost:4040/blogPosts");
+      const response = await fetch("https://blogepic.onrender.com/blogPosts");
       const data = await response.json();
       setBlogPosts(data.blogPosts);
     } catch (error) {
@@ -31,8 +31,8 @@ const BlogPosts = ({ theme }) => {
     e.preventDefault();
     const method = selectedPost ? "PUT" : "POST";
     const url = selectedPost
-      ? `http://localhost:4040/blogPosts/${selectedPost._id}`
-      : "http://localhost:4040/blogPosts";
+      ? `https://blogepic.onrender.com/blogPosts/${selectedPost._id}`
+      : "https://blogepic.onrender.com/blogPosts";
 
     try {
       await fetch(url, {
@@ -62,7 +62,7 @@ const BlogPosts = ({ theme }) => {
 
   const handleDelete = async (postId) => {
     try {
-      await fetch(`http://localhost:4040/blogPosts/${postId}`, {
+      await fetch(`https://blogepic.onrender.com/blogPosts/${postId}`, {
         method: "DELETE",
       });
       fetchBlogPosts();

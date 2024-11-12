@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:4040/users/login", {
+      const response = await fetch("https://blogepic.onrender.com/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const Login = () => {
         Non hai un account? <Link to="/register">Registrati qui</Link>
       </p>
       <div className="mt-3">
-        <a href="http://localhost:4040/auth/github" className="btn btn-dark">
+        <a href="https://blogepic.onrender.com/auth/github" className="btn btn-dark">
           <BsGithub /> Login con GitHub
         </a>
       </div>

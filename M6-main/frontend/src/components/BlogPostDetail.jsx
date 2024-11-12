@@ -20,7 +20,7 @@ const BlogPostDetail = ({ theme }) => {
 
   const fetchPost = async () => {
     try {
-      const response = await fetch(`http://localhost:4040/blogPosts/${id}`);
+      const response = await fetch(`https://blogepic.onrender.com/blogPosts/${id}`);
       const data = await response.json();
       setPost(data);
       setLikes(data.likes || 0);
@@ -32,7 +32,7 @@ const BlogPostDetail = ({ theme }) => {
   const fetchComments = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4040/blogPosts/${id}/comments`
+        `https://blogepic.onrender.com/blogPosts/${id}/comments`
       );
       const data = await response.json();
       setComments(data);
@@ -44,7 +44,7 @@ const BlogPostDetail = ({ theme }) => {
   const handleAddComment = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4040/blogPosts/${id}/comments`,
+        `https://blogepic.onrender.com/blogPosts/${id}/comments`,
         {
           method: "POST",
           headers: {
@@ -65,7 +65,7 @@ const BlogPostDetail = ({ theme }) => {
   const handleDeleteComment = async (commentId) => {
     try {
       await fetch(
-        `http://localhost:4040/blogPosts/${id}/comments/${commentId}`,
+        `https://blogepic.onrender.com/blogPosts/${id}/comments/${commentId}`,
         {
           method: "DELETE",
         }
@@ -85,7 +85,7 @@ const BlogPostDetail = ({ theme }) => {
   const handleUpdateComment = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4040/blogPosts/${id}/comments/${editingComment._id}`,
+        `https://blogepic.onrender.com/blogPosts/${id}/comments/${editingComment._id}`,
         {
           method: "PUT",
           headers: {
@@ -110,7 +110,7 @@ const BlogPostDetail = ({ theme }) => {
 
   const handleLike = async () => {
     try {
-      await fetch(`http://localhost:4040/blogPosts/${id}`, {
+      await fetch(`https://blogepic.onrender.com/blogPosts/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

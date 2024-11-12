@@ -1,3 +1,4 @@
+const port = process.env.PORT || 4040;
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -12,7 +13,7 @@ const githubRoute = require("./routes/github");
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "http://blogepic.vercel.app/",
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
 };
@@ -30,7 +31,6 @@ app.use("", emailRoute);
 app.use("", usersRoute);
 app.use("", githubRoute);
 
-const port = process.env.PORT || 4040;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

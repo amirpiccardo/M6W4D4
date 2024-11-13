@@ -16,7 +16,7 @@ const Header = ({ theme, toggleTheme }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   const handleSearchInput = (e) => {

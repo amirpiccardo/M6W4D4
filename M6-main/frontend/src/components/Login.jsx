@@ -94,7 +94,7 @@ const Login = () => {
         Non hai un account? <Link to="/register">Registrati qui</Link>
       </p>
       <div className="mt-3">
-        <a href="https://blogepic.onrender.com/auth/github" className="btn btn-dark">
+        <a href="https://blogepic.onrender.com/auth/github/callback" className="btn btn-dark">
           <BsGithub /> Login con GitHub
         </a>
       </div>

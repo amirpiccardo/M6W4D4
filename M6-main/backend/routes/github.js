@@ -31,7 +31,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:4040/auth/github/callback",
+      callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
       return done(null, profile);
@@ -51,7 +51,7 @@ github.get(
     const user = req.user;
     const token = jwt.sign(user, process.env.JWT_SECRET);
 
-    const redirectUrl = `http://localhost:5173/success?token=${encodeURIComponent(
+    const redirectUrl = `${process.env.GITHUB_CALLBACK_URL}/success?token=${encodeURIComponent(
       token
     )}&success=true`;
     res.redirect(redirectUrl);
